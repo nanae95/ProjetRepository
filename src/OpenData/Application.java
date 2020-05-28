@@ -22,7 +22,9 @@ public class Application {
 		String titre = sc3.nextLine();
 		System.out.println("Entrez sa date de publication :");
 		int datePub = sc3.nextInt();
-		new Document(numNotice ,ean ,titre ,datePub );
+		System.out.println("Entrez le type du document :");
+		String type = sc3.nextLine();
+		new Document(numNotice ,ean ,titre ,datePub, type );
 		System.out.println("Document créé");
 	}
 	
@@ -49,6 +51,18 @@ public class Application {
 	}
 	
 	public void consulterDocAuteur() {
+		
+	}
+	
+	public void rechercheISBN() {
+		
+	}
+	
+	public void rechercheEAN() {
+		
+	}
+	
+	public void rechercheDocType() {
 		
 	}
 	

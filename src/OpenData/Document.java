@@ -13,6 +13,7 @@ public abstract class Document {
 	private int datePubli; //date de publication
 	private String nomAuteur; //nom de l'auteur
 	private String prenomAuteur; //prenom de l'auteur
+	private String type;
 	
 	public Document() {
 		dispo = true;
@@ -22,13 +23,14 @@ public abstract class Document {
 		nbExemplaires = 1;
 	}
 	
-	public Document(int num, int ean, String titre, int dateP) {
+	public Document(int num, int ean, String titre, int dateP, String type) {
 		dispo = true;
 		numNotice = num;
 		this.ean = ean;
 		this.serie = false;
 		this.titre = titre;
 		datePubli = dateP;
+		this.type = type;
 	}
 	
 	public boolean getDispo() {
