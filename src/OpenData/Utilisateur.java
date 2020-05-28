@@ -29,7 +29,7 @@ public class Utilisateur {
 	}
 	
 	public void emprunt(Document Doc) {
-		if(nbDoc++ <= quotaDoc) && (Doc.getDispo()== true) {
+		if((nbDoc++ <= quotaDoc) && ( Doc.getDispo()== true)) {
 			nbDoc ++;
 			Doc.setDispo();
 		}
