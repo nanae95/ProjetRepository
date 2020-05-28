@@ -20,7 +20,20 @@ public class ListeDoc extends HashMap<Integer,Document> {
 		}
 	}
 	
+	/* La fonction supprimer prend en argument un Document renvoie booleen.
+	 * Elle supprime un element a la liste de document courante et renvoie
+	 * true si le document à supprimer était bien dans la liste des documents et false si non.
+	 */
 	
+	public boolean supprimer(Document doc) {
+		if(containsKey(doc.getEan())) { 
+			remove(doc.getEan());
+			return true;
+		}
+		else {	
+			return false;
+		}
+	}
 	
 	/* La fonction consulter ne prend rien en argument et ne renvoie rien.
 	 * Elle affiche la liste des documents de la liste.
