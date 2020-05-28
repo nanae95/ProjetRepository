@@ -32,6 +32,7 @@ public class Utilisateur {
 		if((nbDoc++ <= quotaDoc) && ( Doc.getDispo()== true)) {
 			nbDoc ++;
 			Doc.setDispo();
+			
 		}
 		//dans l'autre cas besoin message erreur
 		// besoin de la bibliothèque ?
