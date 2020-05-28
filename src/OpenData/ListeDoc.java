@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class ListeDoc extends HashMap<Integer,Document> {
-
 	
 	/* La fonction ajouter prend en argument un Document renvoie booleen.
 	 * Elle ajoute un element a la liste de document courante et renvoie
@@ -28,7 +27,7 @@ public class ListeDoc extends HashMap<Integer,Document> {
 		Set<Entry<Integer, Document>> setList = this.entrySet();
 		Iterator<Entry<Integer, Document>> it = setList.iterator();
 		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
-		res.append("N° notice;	ISBN;	EAN;	Titre;\n");
+		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
 		while(it.hasNext()) {
 			Entry<Integer, Document> e = it.next();
 			res.append(e.getValue().toString() + "\n");
@@ -36,4 +35,39 @@ public class ListeDoc extends HashMap<Integer,Document> {
 		System.out.println(res);
 	}
 	
+	/* La fonction "rechercheEan" renvoie le document associe au numero EAN donne.
+	 * Elle prend en argument un entier correspondant au numero EAN et renvoie le
+	 * document associe s'il existe
+	 */
+	public Document recherche(int ean) {
+		return get(ean);
+	}
+	
+	public void consulterNom(String nom) {
+		Set<Entry<Integer, Document>> setList = this.entrySet();
+		Iterator<Entry<Integer, Document>> it = setList.iterator();
+		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
+		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		while(it.hasNext()) {
+			Entry<Integer, Document> e = it.next();
+			if(e.getValue().getNomAuteur().equals(nom)) {
+				res.append(e.getValue().toString() + "\n");
+			}
+		}
+		System.out.println(res);
+	}
+	
+	public void consulterPrenom(String prenom) {
+		Set<Entry<Integer, Document>> setList = this.entrySet();
+		Iterator<Entry<Integer, Document>> it = setList.iterator();
+		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
+		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		while(it.hasNext()) {
+			Entry<Integer, Document> e = it.next();
+			if(e.getValue().getPrenomAuteur().equals(prenom)) {
+				res.append(e.getValue().toString() + "\n");
+			}
+		}
+		System.out.println(res);
+	}
 }
