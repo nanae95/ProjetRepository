@@ -1,5 +1,8 @@
 package OpenData;
 
-public class ListeLivre extends ListeDoc {
+import java.util.HashMap;
 
+public class ListeLivre<Livre> extends ListeDoc {
+
+		
 }
