@@ -16,14 +16,14 @@ public class ListeSerie extends HashMap<String, ArrayList> {
 	 */
 	public boolean ajouter(Document doc) {
 		if(containsKey(doc.getTitreSerie())) { //verifie si le document ne fait pas deja partie de la liste
-			ArrayList<Document> newListe = (ArrayList<Document>)get(doc.getTitreSerie()).clone();
-			newListe.add(doc);
+			ArrayList<Integer> newListe = (ArrayList<Integer>)get(doc.getTitreSerie()).clone();
+			newListe.add(doc.getEan());
 			put(doc.getTitreSerie(), newListe);
 			return true;	
 		}
 		else {			
-			ArrayList<Document> newListe = new ArrayList<Document>();
-			newListe.add(doc);
+			ArrayList<Integer> newListe = new ArrayList<Integer>();
+			newListe.add(doc.getEan());
 			put(doc.getTitreSerie(), newListe);
 			return true;
 		}
@@ -43,13 +43,17 @@ public class ListeSerie extends HashMap<String, ArrayList> {
 	/* La fonction consulter ne prend rien en argument et ne renvoie rien.
 	 * Elle affiche la liste des documents de la liste.
 	 */
-	public void consulter(String serie) {
-		ArrayList<Document> listeTemp = (ArrayList<Document>) tri(get(serie)).clone();
-		StringBuilder res = new StringBuilder("Liste des documents de la serie " + serie + " : \n\n");
-		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
-		for(Document doc : (ArrayList<Document>)get(serie)) {
-			res.append(doc + "\n");
+	public void consulter(String serie, ListeDoc liste) {
+		ArrayList<Integer> listeEan = (ArrayList<Integer>) tri(get(serie)).clone();
+		ArrayList<Document> listeDoc = new ArrayList<Document>();
+		for(int i : listeEan) {
+			listeDoc.add(liste.get(i));
 		}
-		System.out.println(res);
+		tri(listeDoc);
+		System.out.println("Liste des documents de la serie " + serie + " : \n\n");
+		System.out.println("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		for(Document doc : (ArrayList<Document>)get(serie)) {
+			System.out.println(doc + "\n");
+		}
 	}
 }

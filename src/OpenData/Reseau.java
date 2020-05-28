@@ -25,8 +25,8 @@ public class Reseau {
 		liste2.ajouter(bd3);
 		liste2.ajouter(bd1);
 		//liste2.consulter("ddd");
-		liste2.consulter("LaSerie");
-		liste2.consulterNom("LeNom");
+		//liste2.consulter("LaSerie");
+		//liste2.consulterNom("LeNom");
 		
 	}
 

@@ -102,20 +102,22 @@ public class ListeDoc extends HashMap<Integer,Document> {
 		System.out.println(res);
 	}
 	
-	public void consulterType(String type, int dateMin, int dateMax) {
-		String[]
-		Set<Entry<Integer, Document>> setList = this.entrySet();
-		Iterator<Entry<Integer, Document>> it = setList.iterator();
-		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
-		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
-		while(it.hasNext()) {
-			Entry<Integer, Document> e = it.next();
-			if(e.getValue().getDatePubli() > dateMin && e.getValue().getDatePubli() < dateMax) {
-				if(e.getValue().getClass() ) {
-					res.append(e.getValue().toString() + "\n");					
+	public void consulterType(int dateMin, int dateMax) {
+		//(0)autre, (1)bd, (2)carte, (3)cd, (4)jds, (5)jv, (6)partition, (7)revue, (8)vinyle
+		int nbTypes[] = {0,0,0,0,0,0,0,0,0};
+		String types[] = {Autre.class.getName(), BD.class.getName(), Carte.class.getName(), JeuDeSociete.class.getName(), JeuVideo.class.getName(), Partition.class.getName(), Revue.class.getName(), Vinyle.class.getName()};
+		System.out.println("Liste des documents : \n\n");
+		System.out.println("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		for(Document doc : this.values()) {
+			if(doc.getDatePubli() >= dateMin && doc.getDatePubli() <= dateMax) {
+				for(int i = 0; i<9 ; i++) {
+					if(doc.getClass().getName().equals(types[0])) nbTypes[0] ++;					
 				}
 			}
 		}
-		System.out.println(res);
+		System.out.println( types[1] + " BD, " + types[2] + " cartes, " + types[3] + " CD, " + 
+							types[4] + " jeux de societe, " +  types[5] + " jeux video, " + types[6] +
+							" partitions, " +  types[7] + " revue ets " + types[8] + 
+							" vinyles ont été publiés entre " + dateMin + " et " + dateMax + " ");
 	}
 }
