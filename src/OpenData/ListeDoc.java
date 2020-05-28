@@ -21,6 +21,8 @@ public class ListeDoc extends HashMap<Integer,Document> {
 		}
 	}
 	
+	
+	
 	/* La fonction consulter ne prend rien en argument et ne renvoie rien.
 	 * Elle affiche la liste des documents de la liste.
 	 */

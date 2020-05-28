@@ -33,6 +33,7 @@ public class Utilisateur {
 			nbDoc ++;
 			Doc.setDispo();
 			
+			
 		}
 		//dans l'autre cas besoin message erreur
 		// besoin de la bibliothèque ?
