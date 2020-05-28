@@ -8,8 +8,8 @@ public class Livre extends Document {
 		super();
 	}
 	
-	public Livre(int num, int ean, boolean serie, String titreS, int isbn, String titre) {
-		super(num, ean, serie, titreS, titre);
+	public Livre(int num, int ean, int isbn, String titre, int dateP) {
+		super(num, ean, titre, dateP);
 		this.isbn = isbn;
 	}
 	

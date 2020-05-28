@@ -88,6 +88,7 @@ public class ListeDoc extends HashMap<Integer,Document> {
 	}
 	
 	public void consulterType(String type, int dateMin, int dateMax) {
+		String[]
 		Set<Entry<Integer, Document>> setList = this.entrySet();
 		Iterator<Entry<Integer, Document>> it = setList.iterator();
 		StringBuilder res = new StringBuilder("Liste des documents : \n\n");

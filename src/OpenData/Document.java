@@ -90,6 +90,11 @@ public abstract class Document {
 		nbExemplaires = newNb;
 	}
 	
+	public void setAuteur(String nom, String prenom) {
+		nomAuteur = nom;
+		prenomAuteur = prenom;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder res = new StringBuilder (getNumNotice() + ";	" + " "+ ";	" + getEan() + ";	" + getTitre() + ";	" + getDatePubli() + ";");

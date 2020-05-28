@@ -6,7 +6,7 @@ public class JeuVideo extends Document {
 		super();
 	}
 	
-	public JeuVideo(int num, int ean, boolean serie, String titreS, String titre) {
-		super(num, ean, serie, titreS, titre);
+	public JeuVideo(int num, int ean, String titre, int dateP) {
+		super(num, ean, titre, dateP);
 	}
 }
