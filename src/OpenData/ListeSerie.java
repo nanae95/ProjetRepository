@@ -1,0 +1,55 @@
+package OpenData;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class ListeSerie extends HashMap<String, ArrayList> {
+
+	/* La fonction ajouter prend en argument un Document renvoie booleen.
+	 * Elle ajoute un element a la liste de document courante et renvoie
+	 * true si tout s'est bien passe et false si non.
+	 */
+	public boolean ajouter(Document doc) {
+		if(containsKey(doc.getTitreSerie())) { //verifie si le document ne fait pas deja partie de la liste
+			ArrayList<Document> newListe = (ArrayList<Document>)get(doc.getTitreSerie()).clone();
+			newListe.add(doc);
+			put(doc.getTitreSerie(), newListe);
+			return true;	
+		}
+		else {			
+			ArrayList<Document> newListe = new ArrayList<Document>();
+			newListe.add(doc);
+			put(doc.getTitreSerie(), newListe);
+			return true;
+		}
+	}
+	
+	/* La fonction "tri" trie les documents du même serie par rapport
+	 * a leur date de publication.
+	 * Elle prend en argument une ArrayListe de document et renvoie
+	 * cette ArrayList trié.
+	 */
+	public ArrayList<Document> tri(ArrayList<Document> serie) {
+		Comparator<Document> docComp = new DocumentComparator();
+		Collections.sort(serie, docComp);
+		return serie;
+	}
+	
+	/* La fonction consulter ne prend rien en argument et ne renvoie rien.
+	 * Elle affiche la liste des documents de la liste.
+	 */
+	public void consulter(String serie) {
+		ArrayList<Document> listeTemp = (ArrayList<Document>) tri(get(serie)).clone();
+		StringBuilder res = new StringBuilder("Liste des documents de la serie " + serie + " : \n\n");
+		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		for(Document doc : (ArrayList<Document>)get(serie)) {
+			res.append(doc + "\n");
+		}
+		System.out.println(res);
+	}
+}

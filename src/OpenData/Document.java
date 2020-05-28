@@ -7,8 +7,12 @@ public abstract class Document {
 	private int ean; //numéro ean
 	private boolean serie; //fait partie d'une série
 	private String titreSerie; //si serie = 1, titre_serie = titre de la série auquel il appartient
+	private int numSerie; //Numero de la serie en question
 	private int nbExemplaires; //nombre d'exemplaire du doc	
 	private String titre; //titre de l'ouvrage
+	private int datePubli; //date de publication
+	private String nomAuteur; //nom de l'auteur
+	private String prenomAuteur; //prenom de l'auteur
 	
 	public Document() {
 		dispo = true;
@@ -18,14 +22,13 @@ public abstract class Document {
 		nbExemplaires = 1;
 	}
 	
-	public Document(int num, int ean, boolean serie, String titreS, String titre) {
+	public Document(int num, int ean, String titre, int dateP) {
 		dispo = true;
 		numNotice = num;
 		this.ean = ean;
-		this.serie = serie;
-		if(serie) titreSerie = titreS;
+		this.serie = false;
 		this.titre = titre;
-		
+		datePubli = dateP;
 	}
 	
 	public boolean getDispo() {
@@ -52,12 +55,35 @@ public abstract class Document {
 		return nbExemplaires;
 	}
 	
+	public int getNumSerie() {
+		return numSerie;
+	}
+	
 	public String getTitre() {
 		return titre;
 	}
 	
+	public int getDatePubli() {
+		return datePubli;
+	}
+	
+	public String getNomAuteur() {
+		return nomAuteur;
+	}
+	
+	public String getPrenomAuteur() {
+		return prenomAuteur;
+	}
+	
 	public void setDispo() {
 		dispo = !dispo;
+	}
+	
+	public void setSerie( boolean serie, String titreS, int numSerie) {
+		//ATTENTION EXCEPTION SI PAS SERIE
+		this.serie = serie;
+		this.titreSerie = titreS;
+		this.numSerie = numSerie;
 	}
 	
 	public void setNbExemplaires(int newNb) {
@@ -66,9 +92,10 @@ public abstract class Document {
 	
 	@Override
 	public String toString() {
-		StringBuilder res = new StringBuilder (getNumNotice() + ";	" + " "+ ";	" + getEan() + ";	" + getTitre() + ";");
+		StringBuilder res = new StringBuilder (getNumNotice() + ";	" + " "+ ";	" + getEan() + ";	" + getTitre() + ";	" + getDatePubli() + ";");
 		return res.toString();
 	}
+	
 	
 }
 

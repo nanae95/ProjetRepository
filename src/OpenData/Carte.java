@@ -6,7 +6,7 @@ public class Carte extends Document {
 		super();
 	}
 	
-	public Carte(int num, int ean, boolean serie, String titreS, String titre) {
-		super(num, ean, serie, titreS, titre);
+	public Carte(int num, int ean, String titre, int datePubli) {
+		super(num, ean, titre, datePubli);
 	}
 }
