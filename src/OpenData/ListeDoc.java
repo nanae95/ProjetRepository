@@ -70,4 +70,36 @@ public class ListeDoc extends HashMap<Integer,Document> {
 		}
 		System.out.println(res);
 	}
+	
+	public void consulterNomPrenom(String nom, String prenom) {
+		Set<Entry<Integer, Document>> setList = this.entrySet();
+		Iterator<Entry<Integer, Document>> it = setList.iterator();
+		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
+		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		while(it.hasNext()) {
+			Entry<Integer, Document> e = it.next();
+			if(e.getValue().getNomAuteur().equals(nom)) {
+				if(e.getValue().getPrenomAuteur().equals(prenom)) {
+					res.append(e.getValue().toString() + "\n");					
+				}
+			}
+		}
+		System.out.println(res);
+	}
+	
+	public void consulterType(String type, int dateMin, int dateMax) {
+		Set<Entry<Integer, Document>> setList = this.entrySet();
+		Iterator<Entry<Integer, Document>> it = setList.iterator();
+		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
+		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		while(it.hasNext()) {
+			Entry<Integer, Document> e = it.next();
+			if(e.getValue().getDatePubli() > dateMin && e.getValue().getDatePubli() < dateMax) {
+				if(e.getValue().getClass() ) {
+					res.append(e.getValue().toString() + "\n");					
+				}
+			}
+		}
+		System.out.println(res);
+	}
 }
