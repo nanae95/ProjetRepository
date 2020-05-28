@@ -5,23 +5,20 @@ public class Utilisateur {
 	private int nbDoc; //nombre de document emprunté par l'utilisateur
 	private String nom;
 	private String prenom;
-	private int IdUtilisateur;
-	
+
 	public Utilisateur() {
 		nom = "";
 		prenom = "";
-		IdUtilisateur = 0;
 		quotaDoc = 0;
 		nbDoc = 0;
 	}
 	
-	public Utilisateur(int quotaDoc, int nbDoc, String nom, String prenom, int IdUtilisateur)
+	public Utilisateur(int quotaDoc, int nbDoc, String nom, String prenom)
 	{
 		this.quotaDoc = quotaDoc;
 		this.nbDoc = nbDoc;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.IdUtilisateur = IdUtilisateur;	
 	}
 	
 	public void SetquotaDoc(int quotaDoc) {

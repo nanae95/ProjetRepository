@@ -13,10 +13,8 @@ public class Bibliothèque {
 		ArrayList <Document> listeDoc = new ArrayList<Document>();
 	}
 	
-	public Bibliothèque(String nom, ArrayList <Utilisateur> listeInscrits, ListeDoc listeDocs) {
+	public Bibliothèque(String nom) {
 		this.nom = nom;
-		this.listeInscrits = listeInscrits;
-		this.listeDocs =listeDocs;
 		
 	}
 	
