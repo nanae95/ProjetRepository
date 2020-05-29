@@ -2,18 +2,18 @@ package OpenData;
 
 import java.util.ArrayList;
 
-public class Bibliothèque {
+public class Bibliotheque {
 	private String nom;
 	private ArrayList <Utilisateur> listeInscrits;	//liste des inscrits de la bibliothèque
 	private ListeDoc listeDocs;						//liste des documents de la bibliothèque
 	
-	public Bibliothèque() {
+	public Bibliotheque() {
 		nom = "";
 		ArrayList <Utilisateur> listeInscrits = new ArrayList<Utilisateur>();
 		ArrayList <Document> listeDoc = new ArrayList<Document>();
 	}
 	
-	public Bibliothèque(String nom) {
+	public Bibliotheque(String nom) {
 		this.nom = nom;
 		
 	}
@@ -25,7 +25,7 @@ public class Bibliothèque {
 	}
 	
 	//la fonction echanger permet à 2 bibliothèques de s'échanger 2 documents
-	public void echanger(Bibliothèque b2, Document d1, Document d2) {
+	public void echanger(Bibliotheque b2, Document d1, Document d2) {
 		listeDocs.supprimer(d1);
 		listeDocs.ajouter(d2);
 		b2.listeDocs.supprimer(d2);

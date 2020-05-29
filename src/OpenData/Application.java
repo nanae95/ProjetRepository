@@ -1,14 +1,30 @@
 package OpenData;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
 	
+	ArrayList<String[]> data;
+	ArrayList<Bibliotheque> listeBibli;
+	ListeDoc lesDocs;
+	ListeLivre lesLivres;
+	ListeSerie lesSeries;
+	ListeSerieLivre lesSeriesLivres;
+	
+	public Application(ArrayList<String[]> data) {
+		data = new ArrayList<String[]>();
+	}
+	
 	public void creerbiblio() {
+		
+		/*System.out.println("Quelle bibliotheque voules-vous ajouter ?\n");
+		for(int i = 11; i<)*/
+		
 		Scanner sc2 = new Scanner(System.in);
 		System.out.println("Entrez le nom de la nouvelle bibliothèque :");
 		String nomBiblio = sc2.nextLine();
-		new Bibliothèque(nomBiblio);
+		new Bibliotheque(nomBiblio);
 	}
 	
 	public void creerDoc() {
@@ -22,7 +38,7 @@ public class Application {
 		String titre = sc3.nextLine();
 		System.out.println("Entrez sa date de publication :");
 		int datePub = sc3.nextInt();
-		new Document(numNotice ,ean ,titre ,datePub );
+		//new Document(numNotice ,ean ,titre ,datePub );
 		System.out.println("Document créé");
 	}
 	
@@ -52,31 +68,32 @@ public class Application {
 		
 	}
 	
-	public static void main(String[] args) {
+	public int afficherMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println(" ###### \n #MENU# \n ###### \n 1-Ajouter une nouvelle bibliothèque \n 2-Ajouter un nouveau document \n 3-Ajouter un nouvel utilisateur \n 4-Consulter l'ensemble des document \n 5-Consulter une série \n 6-Consulter les documents d'un auteur \n 7-Rechercher un livre par son IBN \n 8-Rechercher un document par son EAN \n 9-Consulter le nombre de document d'un type publié dans un intervalle de temps");
 		System.out.println("Entrez le numéro correspondant à votre choix");
-		int str = sc.nextInt();
-		menu(str);
-		
-		
-		
+		int res = sc.nextInt();
+		return res;
 	}
 	
-	public void menu(int str) {
-		switch(str) {
-		case 1: creerbiblio();break;
-		case 2: creerDoc();break;
-		case 3: creerUtil();break;
-		case 4: consulterTousDoc();break;
-		case 5: consulterSerie();break;
-		case 6: consulterDocAuteur();break;
-		case 7: rechercheISBN();break;
-		case 8: rechercheEAN();break;
-		case 9: rechercheDocType();break;
-		default:{System.out.println("votre choix n'est pas valide");
-		}
-		};	
+	public boolean menu(int res) {
+		switch(res) {
+		case 1: creerbiblio();return true;
+		case 2: creerDoc();return true;
+		case 3: creerUtil();return true;
+		case 4: consulterTousDoc();return true;
+		case 5: consulterSerie();return true;
+		case 6: consulterDocAuteur();return true;
+		//case 7: rechercheISBN();return true;
+		//case 8: rechercheEAN();return true;
+		//case 9: rechercheDocType();return true;
+		case 10: return exit();
+		default:{System.out.println("votre choix n'est pas valide"); return true;}
+		}	
+	}
+	
+	public boolean exit() {
+		return false;
 	}
 
 }
