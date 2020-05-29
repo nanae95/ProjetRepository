@@ -9,6 +9,7 @@ public class Application {
 		System.out.println("Entrez le nom de la nouvelle bibliothèque :");
 		String nomBiblio = sc2.nextLine();
 		new Bibliothèque(nomBiblio);
+		System.out.println("Bibliothèque créée");
 	}
 	
 	public void creerDoc() {
