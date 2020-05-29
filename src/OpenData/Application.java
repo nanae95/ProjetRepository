@@ -1,6 +1,5 @@
 package OpenData;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
@@ -45,11 +44,13 @@ public class Application {
 		return lesSeriesLivres;
 	}
 	
-	public void creerBiblio() {
+	public void creerbiblio() {
 		Scanner sc2 = new Scanner(System.in);
 		System.out.println("Entrez le nom de la nouvelle bibliothèque :");
 		String nomBiblio = sc2.nextLine();
 		new Bibliotheque(nomBiblio);
+		System.out.println("Bibliothèque créée");
+		System.out.println("Bibliothèque créée");
 	}
 	
 	public void creerDoc() {
@@ -94,6 +95,49 @@ public class Application {
 	}
 	
 	public void consulterDocAuteur() {
+		Scanner sc6 = new Scanner(System.in);
+		System.out.println("Entrez votre choix : \n 1-Recherche par prénom et nom de l'auteur \n 2-Recherche par prénom de l'auteur \n 3-Recherche par nom de l'auteur"  );
+		int i  = sc6.nextInt();
+		if (i=1) {
+			System.out.println("Entrez le nom :");
+			String nom = sc6.nextLine();
+			System.out.println("Entrez le prénom :");
+			String prenom = sc6.nextLine();
+			ListeDoc.consulterNomPrenom(nom,prenom);
+		}
+		if(i=2) {
+			System.out.println("Entrez le prénom :");
+			String prenom = sc6.nextLine();
+			ListeDoc.consulterPrenom(prenom);
+		}
+		if(i=3) {
+			System.out.println("Entrez le nom :");
+			String nom = sc6.nextLine();
+			ListeDoc.consulterNom(nom);
+		}
+		else {
+			//error
+			System.out.println("Votre choix n'est pas valable");
+		}
+	}
+	
+	public void rechercheISBN() {
+		
+	}
+	
+	public void rechercheEAN() {
+		
+	}
+	
+	public void rechercheDocType() {
+		Scanner sc7 = new Scanner(System.in);
+		System.out.println("Entrez le type :");
+		String type = sc7.nextLine();
+		System.out.println("Date de publication minimale des documents recherchés :");
+		int dateMin = sc7.nextInt();
+		System.out.println("Date de publication maximale des documents recherchés :");
+		int dateMax = sc7.nextInt();
+		ListeDoc.consulterType(type, dateMin, dateMax);
 		
 	}
 	

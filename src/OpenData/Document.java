@@ -3,7 +3,8 @@ package OpenData;
 public abstract class Document {
 	
 	private boolean dispo; //disponibilité du document
-	private String ean; //numéro ean
+	private int numNotice; //numéro de notice
+	private int ean; //numéro ean
 	private boolean serie; //fait partie d'une série
 	private String titreSerie; //si serie = 1, titre_serie = titre de la série auquel il appartient
 	private int numSerie; //Numero de la serie en question
@@ -13,6 +14,7 @@ public abstract class Document {
 	private String nomAuteur; //nom de l'auteur
 	private String prenomAuteur; //prenom de l'auteur
 	private String editeur; //nom de l'editeur
+	private String type;
 	
 	public Document() {
 		dispo = true;
