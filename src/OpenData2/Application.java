@@ -3,6 +3,7 @@ package OpenData2;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Application {
 	
 	ArrayList<String[]> data;
@@ -50,6 +51,7 @@ public class Application {
 		System.out.println("Entrez le nom de la nouvelle bibliothèque :");
 		String nomBiblio = sc2.nextLine();
 		new Bibliotheque(nomBiblio);
+		System.out.println("Bibliothèque créée");
 	}
 	
 	public void creerDoc() {
@@ -65,6 +67,7 @@ public class Application {
 		int datePub = sc3.nextInt();
 		//new Document(numNotice ,ean ,titre ,datePub );
 		System.out.println("Document créé");
+		
 	}
 	
 	public void creerUtil() {
@@ -94,7 +97,40 @@ public class Application {
 	}
 	
 	public void consulterDocAuteur() {
-		
+		Scanner sc6 = new Scanner(System.in);
+		System.out.println("Entrez votre choix : \n 1-Recherche par prénom et nom de l'auteur \n 2-Recherche par prénom de l'auteur \n 3-Recherche par nom de l'auteur"  );
+		int i  = sc6.nextInt();
+		if (i==1) {
+			System.out.println("Entrez le nom :");
+			String nom = sc6.nextLine();
+			System.out.println("Entrez le prénom :");
+			String prenom = sc6.nextLine();
+			lesDocs.consulterNomPrenom(nom,prenom);
+		}
+		if(i==2) {
+			System.out.println("Entrez le prénom :");
+			String prenom = sc6.nextLine();
+			lesDocs.consulterPrenom(prenom);
+		}
+		if(i==3) {
+			System.out.println("Entrez le nom :");
+			String nom = sc6.nextLine();
+			lesDocs.consulterNom(nom);
+		}
+		else {
+			//error
+			System.out.println("Votre choix n'est pas valable");
+		}
+	}
+	
+	public void rechercheDocType() {
+		Scanner sc7 = new Scanner(System.in);
+		System.out.println("Date de publication minimale des documents recherchés :");
+		int dateMin = sc7.nextInt();
+		System.out.println("Date de publication maximale des documents recherchés :");
+		int dateMax = sc7.nextInt();
+		lesDocs.consulterType( dateMin, dateMax);
+		System.out.println("Date de publication maximale des documents recherchés :");
 	}
 	
 	public int afficherMenu() {
@@ -115,7 +151,7 @@ public class Application {
 		case 6: consulterDocAuteur();return true;
 		//case 7: rechercheISBN();return true;
 		//case 8: rechercheEAN();return true;
-		//case 9: rechercheDocType();return true;
+		case 9: rechercheDocType();return true;
 		case 10: return exit();
 		default:{System.out.println("votre choix n'est pas valide"); return true;}
 		}	
