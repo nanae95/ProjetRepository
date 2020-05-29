@@ -2,18 +2,18 @@ package OpenData;
 
 public class Livre extends Document {
 	
-	int isbn;
+	String isbn;
 	
 	public Livre() {
 		super();
 	}
 	
-	public Livre(int ean, int isbn, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
+	public Livre(String ean, String isbn, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
 		super(ean, titre, editeur,dateP, titreS, nbSerie, auteurNom, auteurPrenom);
 		this.isbn = isbn;
 	}
 	
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 	

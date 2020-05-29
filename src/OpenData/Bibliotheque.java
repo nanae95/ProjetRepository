@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Bibliotheque {
 	private String nom;
 	private ArrayList <Utilisateur> listeInscrits;	//liste des inscrits de la bibliothèque
-	private ArrayList<Integer> listeDocs; //liste des numero EAN et ISBN des documents de la bibliotheque						//liste des documents de la bibliothèque
+	private ArrayList<String> listeDocs; //liste des numero EAN et ISBN des documents de la bibliotheque						//liste des documents de la bibliothèque
 	
 	
 	public Bibliotheque() {
@@ -33,12 +33,12 @@ public class Bibliotheque {
 		b2.listeDocs.ajouter(d1);
 	} DEPLACER DANS APPLICATION*/
 	
-	public void supprimer(int doc) {
+	public void supprimer(String doc) {
 		if(listeDocs.contains(doc)) listeDocs.remove(doc);
 	}
 	
-	public void ajouter(int doc) {
-		if(!(listeDocs.contains(doc))) listeDocs.remove(doc);
+	public void ajouter(String doc) {
+		if(!(listeDocs.contains(doc))) listeDocs.add(doc);
 	}
 	
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class ListeDoc extends HashMap<Integer,Document> {
+public class ListeDoc extends HashMap<String,Document> {
 	
 	/* La fonction ajouter prend en argument un Document renvoie booleen.
 	 * Elle ajoute un element a la liste de document courante et renvoie
@@ -39,15 +39,11 @@ public class ListeDoc extends HashMap<Integer,Document> {
 	 * Elle affiche la liste des documents de la liste.
 	 */
 	public void consulter() {
-		Set<Entry<Integer, Document>> setList = this.entrySet();
-		Iterator<Entry<Integer, Document>> it = setList.iterator();
-		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
-		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
-		while(it.hasNext()) {
-			Entry<Integer, Document> e = it.next();
-			res.append(e.getValue().toString() + "\n");
+		System.out.println("Liste des documents : \n\n");
+		System.out.println("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		for(Document doc : this.values()) {
+			System.out.println(doc.toString() + "\n");
 		}
-		System.out.println(res);
 	}
 	
 	/* La fonction "rechercheEan" renvoie le document associe au numero EAN donne.
@@ -59,43 +55,32 @@ public class ListeDoc extends HashMap<Integer,Document> {
 	}
 	
 	public void consulterNom(String nom) {
-		Set<Entry<Integer, Document>> setList = this.entrySet();
-		Iterator<Entry<Integer, Document>> it = setList.iterator();
-		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
-		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
-		while(it.hasNext()) {
-			Entry<Integer, Document> e = it.next();
-			if(e.getValue().getNomAuteur().equals(nom)) {
-				res.append(e.getValue().toString() + "\n");
+		System.out.println("Liste des documents : \n\n");
+		System.out.println("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		for(Document doc : this.values()) {
+			if(doc.getNomAuteur().equals(nom)) {
+				System.out.println(doc.toString() + "\n");
 			}
 		}
-		System.out.println(res);
 	}
 	
 	public void consulterPrenom(String prenom) {
-		Set<Entry<Integer, Document>> setList = this.entrySet();
-		Iterator<Entry<Integer, Document>> it = setList.iterator();
-		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
-		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
-		while(it.hasNext()) {
-			Entry<Integer, Document> e = it.next();
-			if(e.getValue().getPrenomAuteur().equals(prenom)) {
-				res.append(e.getValue().toString() + "\n");
+		System.out.println("Liste des documents : \n\n");
+		System.out.println("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
+		for(Document doc : this.values()){
+			if(doc.getPrenomAuteur().equals(prenom)) {
+				System.out.println(doc.toString() + "\n");
 			}
 		}
-		System.out.println(res);
 	}
 	
 	public void consulterNomPrenom(String nom, String prenom) {
-		Set<Entry<Integer, Document>> setList = this.entrySet();
-		Iterator<Entry<Integer, Document>> it = setList.iterator();
 		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
 		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
-		while(it.hasNext()) {
-			Entry<Integer, Document> e = it.next();
-			if(e.getValue().getNomAuteur().equals(nom)) {
-				if(e.getValue().getPrenomAuteur().equals(prenom)) {
-					res.append(e.getValue().toString() + "\n");					
+		for(Document doc : this.values()) {
+			if(doc.getNomAuteur().equals(nom)) {
+				if(doc.getPrenomAuteur().equals(prenom)) {
+					res.append(doc.toString() + "\n");					
 				}
 			}
 		}
@@ -105,7 +90,7 @@ public class ListeDoc extends HashMap<Integer,Document> {
 	public void consulterType(int dateMin, int dateMax) {
 		//(0)autre, (1)bd, (2)carte, (3)cd, (4)jds, (5)jv, (6)partition, (7)revue, (8)vinyle
 		int nbTypes[] = {0,0,0,0,0,0,0,0,0};
-		String types[] = {Autre.class.getName(), BD.class.getName(), Carte.class.getName(), JeuDeSociete.class.getName(), JeuVideo.class.getName(), Partition.class.getName(), Revue.class.getName(), Vinyle.class.getName()};
+		String types[] = {Autre.class.getName(), BD.class.getName(), Carte.class.getName(), JeuDeSociete.class.getName(), JeuxVideo.class.getName(), Partition.class.getName(), Revue.class.getName(), Vinyle.class.getName()};
 		System.out.println("Liste des documents : \n\n");
 		System.out.println("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
 		for(Document doc : this.values()) {

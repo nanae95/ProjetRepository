@@ -3,7 +3,7 @@ package OpenData;
 public abstract class Document {
 	
 	private boolean dispo; //disponibilité du document
-	private int ean; //numéro ean
+	private String ean; //numéro ean
 	private boolean serie; //fait partie d'une série
 	private String titreSerie; //si serie = 1, titre_serie = titre de la série auquel il appartient
 	private int numSerie; //Numero de la serie en question
@@ -16,12 +16,12 @@ public abstract class Document {
 	
 	public Document() {
 		dispo = true;
-		ean = 0;
+		ean = "";
 		serie = false;
 		nbExemplaires = 1;
 	}
 	
-	public Document(int ean, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
+	public Document(String ean, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
 		dispo = true;
 		this.ean = ean;
 		this.titre = titre;
@@ -40,7 +40,7 @@ public abstract class Document {
 		return dispo;
 	}
 	
-	public int getEan() {
+	public String getEan() {
 		return ean;
 	}
 	

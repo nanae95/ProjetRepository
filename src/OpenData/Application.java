@@ -81,10 +81,10 @@ public class Application {
 	
 	//la fonction echanger permet à 2 bibliothèques de s'échanger 2 documents
 		public void echanger(Bibliotheque b2, Document d1, Document d2) {
-			.getListeDocs().supprimer(d1);
+			/*.getListeDocs().supprimer(d1);
 			listeDocs.ajouter(d2.getEan());
 			b2.listeDocs.supprimer(d2);
-			b2.listeDocs.ajouter(d1);
+			b2.listeDocs.ajouter(d1);*/
 		}
 	
 	public void consulterSerie() {
@@ -110,7 +110,7 @@ public class Application {
 		case 1: creerBiblio();return true;
 		case 2: creerDoc();return true;
 		case 3: creerUtil();return true;
-		case 4: consulterTousDoc();return true;
+		//case 4: consulterTousDoc();return true;
 		case 5: consulterSerie();return true;
 		case 6: consulterDocAuteur();return true;
 		//case 7: rechercheISBN();return true;
