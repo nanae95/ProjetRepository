@@ -1,4 +1,4 @@
-1package OpenData2;
+package OpenData2;
 
 import java.io.File;
 

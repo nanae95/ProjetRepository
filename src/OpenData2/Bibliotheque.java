@@ -10,12 +10,14 @@ public class Bibliotheque {
 	
 	public Bibliotheque() {
 		nom = "";
-		ArrayList <Utilisateur> listeInscrits = new ArrayList<Utilisateur>();
-		ArrayList <Document> listeDoc = new ArrayList<Document>();
+		listeInscrits = new ArrayList<Utilisateur>();
+		listeDocs = new ArrayList<String>();
 	}
 	
 	public Bibliotheque(String nom) {
 		this.nom = nom;
+		listeInscrits = new ArrayList<Utilisateur>();
+		listeDocs = new ArrayList<String>();
 		
 	}
 	

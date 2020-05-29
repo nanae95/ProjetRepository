@@ -78,7 +78,7 @@ public class FileReader
             			
             			if(dateInt%10000 >= 2021 || dateInt%10000 < 0)
             			{
-            				date = "?";
+            				date = "-1";
             			}
             			else if(dateInt/10000 == 0)
             			{
@@ -86,12 +86,13 @@ public class FileReader
             			}
             			else
             			{
-            				date = dateInt%10000 + "-" + dateInt/10000;
+            				//date = dateInt%10000 + "-" + dateInt/10000;
+            				date = Integer.toString(dateInt/10000);
             			}
             		}
             		catch (Exception exception)
             		{
-            			date = "?";
+            			date = "-1";
             		}
             		
             		//Get the title of the series
