@@ -25,6 +25,7 @@ public class Utilisateur {
 		this.quotaDoc= quotaDoc;	
 	}
 	
+	
 	public void emprunt(Document Doc) {
 		if((nbDoc++ <= quotaDoc) && ( Doc.getDispo()== true)) {
 			nbDoc ++;
@@ -32,8 +33,6 @@ public class Utilisateur {
 			
 			
 		}
-		//dans l'autre cas besoin message erreur
-		// besoin de la bibliothèque ?
 	}
 	
 	public void remise(Document Doc) {

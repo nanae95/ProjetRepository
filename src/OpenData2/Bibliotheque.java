@@ -35,10 +35,12 @@ public class Bibliotheque {
 		b2.listeDocs.ajouter(d1);
 	} DEPLACER DANS APPLICATION*/
 	
+	//permet de supprimer un document si il existe dans la liste
 	public void supprimer(String doc) {
 		if(listeDocs.contains(doc)) listeDocs.remove(doc);
 	}
 	
+	//permet d'ajouter un document si il n'existe pas dans la liste
 	public void ajouter(String doc) {
 		if(!(listeDocs.contains(doc))) listeDocs.add(doc);
 	}
