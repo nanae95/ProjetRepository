@@ -12,15 +12,40 @@ public class Application {
 	ListeSerie lesSeries;
 	ListeSerieLivre lesSeriesLivres;
 	
-	public Application(ArrayList<String[]> data) {
+	public Application() {
 		data = new ArrayList<String[]>();
+		listeBibli = new ArrayList<Bibliotheque>();
+		lesDocs = new ListeDoc();
+		lesLivres = new ListeLivre();
+		lesSeries = new ListeSerie();
+		lesSeriesLivres = new ListeSerieLivre();
+        String[] bibliotheques = {"Aime Cesaire", "Edmond Rostand", "Jean Pierre Melville", "Oscar Wilde", "Saint Simon" };
+		for(String str : bibliotheques) {
+			listeBibli.add(new Bibliotheque(str));
+		}
 	}
 	
-	public void creerbiblio() {
-		
-		/*System.out.println("Quelle bibliotheque voules-vous ajouter ?\n");
-		for(int i = 11; i<)*/
-		
+	public ArrayList<Bibliotheque> getListeBibli() {
+		return listeBibli;
+	}	
+	
+	public ListeDoc getLesDocs() {
+		return lesDocs;
+	}
+	
+	public ListeLivre getLesLivres() {
+		return lesLivres;
+	}
+	
+	public ListeSerie getLesSeries() {
+		return lesSeries;
+	}
+	
+	public ListeSerieLivre getLesSeriesLivres() {
+		return lesSeriesLivres;
+	}
+	
+	public void creerBiblio() {
 		Scanner sc2 = new Scanner(System.in);
 		System.out.println("Entrez le nom de la nouvelle bibliothèque :");
 		String nomBiblio = sc2.nextLine();
@@ -54,9 +79,13 @@ public class Application {
 		System.out.println("Utilisateur créé");
 	}
 	
-	public void consulterTousDoc() {
-
-	}
+	//la fonction echanger permet à 2 bibliothèques de s'échanger 2 documents
+		public void echanger(Bibliotheque b2, Document d1, Document d2) {
+			.getListeDocs().supprimer(d1);
+			listeDocs.ajouter(d2.getEan());
+			b2.listeDocs.supprimer(d2);
+			b2.listeDocs.ajouter(d1);
+		}
 	
 	public void consulterSerie() {
 		Scanner sc5 = new Scanner(System.in);
@@ -78,7 +107,7 @@ public class Application {
 	
 	public boolean menu(int res) {
 		switch(res) {
-		case 1: creerbiblio();return true;
+		case 1: creerBiblio();return true;
 		case 2: creerDoc();return true;
 		case 3: creerUtil();return true;
 		case 4: consulterTousDoc();return true;

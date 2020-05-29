@@ -5,8 +5,9 @@ import java.io.File;
 
 public class Main 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
+		Application appli = new Application();
 		if(args.length > 0)
 		{
 			File tempFile = new File(args[0]);
@@ -16,7 +17,7 @@ public class Main
 				System.out.println("[Main] Reading the file " + args[0] + " ...");
 						
 				//We start by reading the CSV file
-				FileReader.getDataFromCSVFile(args[0]);
+				Application application = FileReader.getDataFromCSVFile(args[0]);
 				
 				System.out.println("[Main] End of the file " + args[0] + ".");
 			}
@@ -31,7 +32,7 @@ public class Main
 		}
 		
 		//TODO Project :)
-		Application appli = new Application(FileReader.docs);
+		
 		boolean exit = false;
 		int val;
 		while(exit == false) {

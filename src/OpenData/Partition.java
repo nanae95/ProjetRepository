@@ -6,7 +6,7 @@ public class Partition extends Document {
 		super();
 	}
 	
-	public Partition(int num, int ean, String titre, int dateP) {
-		super(num, ean, titre, dateP);
+	public Partition(int ean, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
+		super(ean, titre, editeur,dateP, titreS, nbSerie, auteurNom, auteurPrenom);
 	}
 }

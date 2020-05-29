@@ -8,8 +8,8 @@ public class Livre extends Document {
 		super();
 	}
 	
-	public Livre(int num, int ean, int isbn, String titre, int dateP) {
-		super(num, ean, titre, dateP);
+	public Livre(int ean, int isbn, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
+		super(ean, titre, editeur,dateP, titreS, nbSerie, auteurNom, auteurPrenom);
 		this.isbn = isbn;
 	}
 	
@@ -19,7 +19,7 @@ public class Livre extends Document {
 	
 	@Override
 	public String toString() {
-		StringBuilder res = new StringBuilder (getNumNotice() + ";	" + getIsbn() + ";	" + getEan() + ";	" + getTitre() + ";");
+		StringBuilder res = new StringBuilder (getIsbn() + ";	" + getEan() + ";	" + getTitre() + ";");
 		return res.toString();
 	}
 

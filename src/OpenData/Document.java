@@ -3,7 +3,6 @@ package OpenData;
 public abstract class Document {
 	
 	private boolean dispo; //disponibilité du document
-	private int numNotice; //numéro de notice
 	private int ean; //numéro ean
 	private boolean serie; //fait partie d'une série
 	private String titreSerie; //si serie = 1, titre_serie = titre de la série auquel il appartient
@@ -13,30 +12,32 @@ public abstract class Document {
 	private int datePubli; //date de publication
 	private String nomAuteur; //nom de l'auteur
 	private String prenomAuteur; //prenom de l'auteur
+	private String editeur; //nom de l'editeur
 	
 	public Document() {
 		dispo = true;
-		numNotice = 0;
 		ean = 0;
 		serie = false;
 		nbExemplaires = 1;
 	}
 	
-	public Document(int num, int ean, String titre, int dateP) {
+	public Document(int ean, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
 		dispo = true;
-		numNotice = num;
 		this.ean = ean;
-		this.serie = false;
 		this.titre = titre;
 		datePubli = dateP;
+		this.nomAuteur = auteurNom;
+		this.prenomAuteur = auteurPrenom;
+		this.editeur = editeur;
+		try {
+			setSerie(titreS, nbSerie);
+		} catch (ExceptionSerie e) {
+			serie = false;
+		}
 	}
 	
 	public boolean getDispo() {
 		return dispo;
-	}
-	
-	public int getNumNotice() {
-		return numNotice;
 	}
 	
 	public int getEan() {
@@ -79,11 +80,15 @@ public abstract class Document {
 		dispo = !dispo;
 	}
 	
-	public void setSerie( boolean serie, String titreS, int numSerie) {
-		//ATTENTION EXCEPTION SI PAS SERIE
-		this.serie = serie;
-		this.titreSerie = titreS;
-		this.numSerie = numSerie;
+	public void setSerie(String titreS, int numSerie) throws ExceptionSerie {
+		if(titreS == "") {
+			throw new ExceptionSerie(this);
+		}
+		else {
+			this.serie = true;
+			this.titreSerie = titreS;
+			this.numSerie = numSerie;
+		}
 	}
 	
 	public void setNbExemplaires(int newNb) {
@@ -97,7 +102,7 @@ public abstract class Document {
 	
 	@Override
 	public String toString() {
-		StringBuilder res = new StringBuilder (getNumNotice() + ";	" + " "+ ";	" + getEan() + ";	" + getTitre() + ";	" + getDatePubli() + ";");
+		StringBuilder res = new StringBuilder (" "+ ";	" + getEan() + ";	" + getTitre() + ";	" + getDatePubli() + ";");
 		return res.toString();
 	}
 	

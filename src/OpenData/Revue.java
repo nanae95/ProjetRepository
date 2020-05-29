@@ -6,7 +6,7 @@ public class Revue extends Document {
 		super();
 	}
 	
-	public Revue(int num, int ean, boolean serie, String titreS, String titre, int dateP) {
-		super(num, ean, titre, dateP);
+	public Revue(int ean, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
+		super(ean, titre, editeur,dateP, titreS, nbSerie, auteurNom, auteurPrenom);
 	}
 }

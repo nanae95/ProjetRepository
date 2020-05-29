@@ -6,7 +6,7 @@ public class Vinyle extends Document {
 		super();
 	}
 	
-	public Vinyle(int num, int ean, boolean serie, String titreS, String titre, int dateP) {
-		super(num, ean, titre, dateP);
+	public Vinyle(int ean, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
+		super(ean, titre, editeur,dateP, titreS, nbSerie, auteurNom, auteurPrenom);
 	}
 }
