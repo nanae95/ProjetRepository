@@ -13,7 +13,10 @@ public abstract class Document {
 	private int datePubli; //date de publication
 	private String nomAuteur; //nom de l'auteur
 	private String prenomAuteur; //prenom de l'auteur
+<<<<<<< HEAD
 	private String editeur; //nom de l'editeur
+=======
+>>>>>>> branch 'master' of https://github.com/nanae95/ProjetRepository.git
 	private String type;
 	
 	public Document() {
@@ -23,11 +26,16 @@ public abstract class Document {
 		nbExemplaires = 1;
 	}
 	
+<<<<<<< HEAD
 	public Document(String ean, String titre, String editeur,int dateP, String titreS, int nbSerie, String auteurNom, String auteurPrenom) {
+=======
+	public Document(int num, int ean, String titre, int dateP, String type) {
+>>>>>>> branch 'master' of https://github.com/nanae95/ProjetRepository.git
 		dispo = true;
 		this.ean = ean;
 		this.titre = titre;
 		datePubli = dateP;
+<<<<<<< HEAD
 		this.nomAuteur = auteurNom;
 		this.prenomAuteur = auteurPrenom;
 		this.editeur = editeur;
@@ -36,6 +44,9 @@ public abstract class Document {
 		} catch (ExceptionSerie e) {
 			serie = false;
 		}
+=======
+		this.type = type;
+>>>>>>> branch 'master' of https://github.com/nanae95/ProjetRepository.git
 	}
 	
 	public boolean getDispo() {
