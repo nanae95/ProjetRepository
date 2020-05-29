@@ -54,68 +54,82 @@ public class Application {
 		System.out.println("Bibliothèque créée!\n Que voulez vous faire ensuite ?\n");
 	}
 	
-	public void creerDoc() {
+	public boolean creerDoc() {
 		//verifier ean isbn et ajouter liste doc
 		Scanner sc3 = new Scanner(System.in);
 		System.out.println("Entrez l'EAN :");
 		String ean = sc3.nextLine();
 		System.out.println("Entrez le titre du document :");
-		String titre = sc3.nextLine();
+		String title = sc3.nextLine();
 		System.out.println("Entrez le nom de l'éditeur :");
-		String editeur = sc3.nextLine();
+		String publisher = sc3.nextLine();
 		System.out.println("Entrez sa date de publication :");
-		int datePub = sc3.nextInt();
-		listeDoc = new Document(numNotice ,ean ,titre ,datePub );
-		if(type.contains("Livre")) {
-			app.getLesLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-			app.getLesSeriesLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-			//AJOUT AUX BIBLIOTHEQUES
-			if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).ajouter(isbn);
-	   		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).ajouter(isbn);
-	   		if(numberCopyJeanPierreMelville > 0)  app.getListeBibli().get(2).ajouter(isbn);
-	   		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).ajouter(isbn);
-	   		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).ajouter(isbn);
+		int dateBis = sc3.nextInt();
+		System.out.println("Entrez le nom de l'auteur :");
+		String authorSurname = sc3.nextLine();
+		System.out.println("Entrez le prenom de l'auteur :");
+		String authorName = sc3.nextLine();
+		System.out.println("Fait-il partie d'une serie ? 1 : Oui		2: Non");
+		int rep = sc3.nextInt();
+		String seriesTitle;
+		int seriesNumber;
+		if(rep == 1) {
+			System.out.println("Quel est le nom de la serie ? ");
+			seriesTitle = sc3.nextLine();
+			System.out.println("Quel est son numero dans la serie ? ");
+			seriesNumber = sc3.nextInt();
 		}
 		else {
+			seriesTitle = "";
+			seriesNumber = -1;
+		}
+		System.out.println("Entrez le type du document :");
+		String type = sc3.nextLine();
+		if(type.contains("Livre")) { 
+			System.out.println("Quel est le numéro ISBN ?");	
+			String isbn = sc3.nextLine();
+			lesLivres.ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+			lesSeriesLivres.ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+			return false;
+		}
 			if(type.contains("Bande")) {
-				app.getLesDocs().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-				app.getLesSeries().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+				lesDocs.ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+				lesSeries.ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 			}
 			else if(type.contains("Carte")) {
-				app.getLesDocs().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-				app.getLesSeries().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+				lesDocs.ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+				lesSeries.ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 			}
 			else if(type.contains("Disque")) {
-				app.getLesDocs().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-				app.getLesSeries().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+				lesDocs.ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+				lesSeries.ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 			}
 				else if(type.contains("societe")) {
-					app.getLesDocs().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-					app.getLesSeries().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesDocs.ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesSeries.ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 				}
 				else if(type.contains("Jeux")) {
-					app.getLesDocs().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-					app.getLesSeries().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesDocs.ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesSeries.ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 				}
 				else if(type.contains("Partition")) {
-					app.getLesDocs().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-					app.getLesSeries().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesDocs.ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesSeries.ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 				}
 				else if(type.contains("Revue")) {
-					app.getLesDocs().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-					app.getLesSeries().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesDocs.ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesSeries.ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 				}
 				else if(type.contains("Vinyle")) {
-					app.getLesDocs().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-					app.getLesSeries().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesDocs.ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesSeries.ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 				}
 				else {
-					app.getLesDocs().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-					app.getLesSeries().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesDocs.ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+					lesSeries.ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
 				}
-		new Document(ean ,titre ,editeur , datePub, );
 		System.out.println("Document créé! \n Que voulez vous faire ensuite ?\n");
-		
+		return false;
 	}
 	
 	public void creerUtil() {
