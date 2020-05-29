@@ -50,23 +50,21 @@ public class Application {
 		Scanner sc2 = new Scanner(System.in);
 		System.out.println("Entrez le nom de la nouvelle bibliothèque :");
 		String nomBiblio = sc2.nextLine();
-		new Bibliotheque(nomBiblio);
-		System.out.println("Bibliothèque créée");
+		listeBibli.add(new Bibliotheque(nomBiblio));
+		System.out.println("Bibliothèque créée!\n Que voulez vous faire ensuite ?\n");
 	}
 	
 	public void creerDoc() {
 		//verifier ean isbn et ajouter liste doc
 		Scanner sc3 = new Scanner(System.in);
-		System.out.println("Entrez le numéro de notice :");
-		int numNotice = sc3.nextInt();
 		System.out.println("Entrez l'EAN :");
 		int ean = sc3.nextInt();
 		System.out.println("Entrez le titre du document :");
 		String titre = sc3.nextLine();
 		System.out.println("Entrez sa date de publication :");
 		int datePub = sc3.nextInt();
-		//new Document(numNotice ,ean ,titre ,datePub );
-		System.out.println("Document créé");
+		new Document(numNotice ,ean ,titre ,datePub );
+		System.out.println("Document créé! \n Que voulez vous faire ensuite ?\n");
 		
 	}
 	
@@ -79,7 +77,7 @@ public class Application {
 		System.out.println("Entrez son quota de documents :");
 		int quotaDoc = sc4.nextInt();
 		new Utilisateur(quotaDoc, 0, nom, prenom);
-		System.out.println("Utilisateur créé");
+		System.out.println("Utilisateur créé! \n Que voulez vous faire ensuite ?\n");
 	}
 	
 	//la fonction echanger permet à 2 bibliothèques de s'échanger 2 documents
@@ -143,22 +141,22 @@ public class Application {
 	
 	public boolean menu(int res) {
 		switch(res) {
-		case 1: creerBiblio();return true;
-		case 2: creerDoc();return true;
-		case 3: creerUtil();return true;
-		//case 4: consulterTousDoc();return true;
-		case 5: consulterSerie();return true;
-		case 6: consulterDocAuteur();return true;
-		//case 7: rechercheISBN();return true;
-		//case 8: rechercheEAN();return true;
-		case 9: rechercheDocType();return true;
+		case 1: creerBiblio();return false;
+		case 2: creerDoc();return false;
+		case 3: creerUtil();return false;
+		//case 4: consulterTousDoc();return false;
+		case 5: consulterSerie();return false;
+		case 6: consulterDocAuteur();return false;
+		//case 7: rechercheISBN();return false;
+		//case 8: rechercheEAN();return false;
+		case 9: rechercheDocType();return false;
 		case 10: return exit();
 		default:{System.out.println("votre choix n'est pas valide"); return true;}
 		}	
 	}
 	
 	public boolean exit() {
-		return false;
+		return true;
 	}
 
 }
