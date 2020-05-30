@@ -54,6 +54,7 @@ public class ListeDoc extends HashMap<String,Document> {
 		return get(ean);
 	}
 	
+	//permet de consulter les documents dont le nom de l'auteur est celui en argument de la fonction
 	public void consulterNom(String nom) {
 		System.out.println("Liste des documents : \n\n");
 		System.out.println("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
@@ -64,6 +65,7 @@ public class ListeDoc extends HashMap<String,Document> {
 		}
 	}
 	
+	//permet de consulter les documents dont le prénom de l'auteur est celui en argument de la fonction
 	public void consulterPrenom(String prenom) {
 		System.out.println("Liste des documents : \n\n");
 		System.out.println("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
@@ -74,6 +76,7 @@ public class ListeDoc extends HashMap<String,Document> {
 		}
 	}
 	
+	//permet de consulter les documents dont le nom de l'auteu et prénom sont ceux en argument de la fonction
 	public void consulterNomPrenom(String nom, String prenom) {
 		StringBuilder res = new StringBuilder("Liste des documents : \n\n");
 		res.append("N° notice;	ISBN;	EAN;	Titre;	Date de Publication;\n");
@@ -87,6 +90,7 @@ public class ListeDoc extends HashMap<String,Document> {
 		System.out.println(res);
 	}
 	
+	//permet de donner le nombre de documents de chaque type dans un intervalle de temps pris en argument
 	public void consulterType(int dateMin, int dateMax) {
 		//(0)autre, (1)bd, (2)carte, (3)cd, (4)jds, (5)jv, (6)partition, (7)revue, (8)vinyle
 		int nbTypes[] = {0,0,0,0,0,0,0,0,0};

@@ -1,35 +1,22 @@
-package OpenData2;
+package OpenData;
 
 import java.util.ArrayList;
 
 public class Bibliotheque {
 	private String nom;
 	private ArrayList <Utilisateur> listeInscrits;	//liste des inscrits de la bibliothèque
-	private ArrayList<String> listeDocs; //liste des numero EAN et ISBN des documents de la bibliotheque
+	private ArrayList<String> listeDocs; //liste des numero EAN et ISBN des documents de la bibliotheque						//liste des documents de la bibliothèque
 	
 	
 	public Bibliotheque() {
 		nom = "";
-		listeInscrits = new ArrayList<Utilisateur>();
-		listeDocs = new ArrayList<String>();
+		ArrayList <Utilisateur> listeInscrits = new ArrayList<Utilisateur>();
+		ArrayList <Document> listeDoc = new ArrayList<Document>();
 	}
 	
 	public Bibliotheque(String nom) {
 		this.nom = nom;
-		listeInscrits = new ArrayList<Utilisateur>();
-		listeDocs = new ArrayList<String>();
-	}
-	
-	public String getNom() {
-		return nom;
-	}
-	
-	public ArrayList<String> getListeDocs() {
-		return listeDocs;
-	}
-	
-	public ArrayList<Utilisateur> getListeInscrits() {
-		return listeInscrits;
+		
 	}
 	
 	//permet d'inscrire un utilisateur dans la bibliothèque
@@ -46,12 +33,12 @@ public class Bibliotheque {
 		b2.listeDocs.ajouter(d1);
 	} DEPLACER DANS APPLICATION*/
 	
-	//permet de supprimer un document si il existe dans la liste
+	//permet de supprimer un document à la liste de documents si il y est bien
 	public void supprimer(String doc) {
 		if(listeDocs.contains(doc)) listeDocs.remove(doc);
 	}
 	
-	//permet d'ajouter un document si il n'existe pas dans la liste
+	//permet d'ajouter un document à la liste de documents si il n'y est pas déjà
 	public void ajouter(String doc) {
 		if(!(listeDocs.contains(doc))) listeDocs.add(doc);
 	}

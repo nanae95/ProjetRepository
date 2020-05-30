@@ -1,10 +1,12 @@
 package OpenData2;
 
 public class Utilisateur {
+	
 	private int quotaDoc; //quota de documents imposé à l'utilisateur
 	private int nbDoc; //nombre de document emprunté par l'utilisateur
 	private String nom;
 	private String prenom;
+	
 
 	public Utilisateur() {
 		nom = "";
@@ -25,6 +27,7 @@ public class Utilisateur {
 		this.quotaDoc= quotaDoc;	
 	}
 	
+	
 	public void emprunt(Document Doc) {
 		if((nbDoc++ <= quotaDoc) && ( Doc.getDispo()== true)) {
 			nbDoc ++;
@@ -32,8 +35,6 @@ public class Utilisateur {
 			
 			
 		}
-		//dans l'autre cas besoin message erreur
-		// besoin de la bibliothèque ?
 	}
 	
 	public void remise(Document Doc) {
