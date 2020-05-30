@@ -63,8 +63,6 @@ public class Application {
 		String title = sc3.nextLine();
 		System.out.println("Entrez le nom de l'éditeur :");
 		String publisher = sc3.nextLine();
-		System.out.println("Entrez le nom de l'éditeur :");
-		String editeur = sc3.nextLine();
 		System.out.println("Entrez sa date de publication :");
 		int dateBis = sc3.nextInt();
 		System.out.println("Entrez le nom de l'auteur :");
