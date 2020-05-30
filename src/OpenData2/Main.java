@@ -36,10 +36,8 @@ public class Main
 		boolean exit = false;
 		int val;
 		while(exit == false) {
-			val = appli.afficherMenu();
-			exit = appli.menu(val);
-		}
-		
-		
+			val = appli.afficherMenu1();
+			exit = appli.menu1(val);
+		}		
 	}
 }

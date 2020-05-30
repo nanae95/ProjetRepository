@@ -167,6 +167,7 @@ public class Application {
 			System.out.println("Entrez le prénom :");
 			String prenom = sc6.nextLine();
 			lesDocs.consulterNomPrenom(nom,prenom);
+			lesLivres.consulterNomPrenom(nom, prenom);
 		}
 		if(i==2) {
 			System.out.println("Entrez le prénom :");
@@ -177,6 +178,34 @@ public class Application {
 			System.out.println("Entrez le nom :");
 			String nom = sc6.nextLine();
 			lesDocs.consulterNom(nom);
+		}
+		else {
+			//error
+			System.out.println("Votre choix n'est pas valable");
+		}
+	}
+	
+	public void consulterDocsAuteur(Bibliotheque bi) {
+		Scanner sc6 = new Scanner(System.in);
+		System.out.println("Entrez votre choix : \n 1-Recherche par prénom et nom de l'auteur \n 2-Recherche par prénom de l'auteur \n 3-Recherche par nom de l'auteur"  );
+		int i  = sc6.nextInt();
+		if (i==1) {
+			System.out.println("Entrez le nom :");
+			String nom = sc6.nextLine();
+			System.out.println("Entrez le prénom :");
+			String prenom = sc6.nextLine();
+			bi.getListeDocs().consulterNomPrenom(nom,prenom);
+			bi.getListeLivres().consulterNomPrenom(nom, prenom);
+		}
+		if(i==2) {
+			System.out.println("Entrez le prénom :");
+			String prenom = sc6.nextLine();
+			bi.getListeDocs().consulterPrenom(prenom);
+		}
+		if(i==3) {
+			System.out.println("Entrez le nom :");
+			String nom = sc6.nextLine();
+			bi.getListeDocs().consulterNom(nom);
 		}
 		else {
 			//error
@@ -243,8 +272,16 @@ public class Application {
 		return res;
 	}
 	
-	public void consulterDoc() {
-		lesDocs.consulter();
+	public int afficherMenu5() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" ###### \n #MENU# \n ###### \n"
+				+ "1- Emprunt d'une bibliotheque dans le reseau \n\n"
+				+ "2- Emprunt d'une bibliotheque dans une autre bibliotheque \n\n"
+				+ "3- Emprunt d'un utilisateur dans une bibliotheque"
+				+ "4- Quitter\n\n");
+		System.out.println("Entrez le numéro correspondant à votre choix");
+		int res = sc.nextInt();
+		return res;
 	}
 	
 	public void consulterSerie() {
@@ -252,6 +289,18 @@ public class Application {
 		System.out.println("Entrez le nom de la serie que vous voulez consulter :");
 		String serie = sc.nextLine();
 		lesSeries.consulter(serie, lesDocs);
+	}
+	public void consulterSerie(Bibliotheque b) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Entrez le nom de la serie que vous voulez consulter :");
+		String serie = sc.nextLine();
+		b.getListeSeries().consulter(serie, lesDocs);
+	}
+	public void consulterSerieLivres() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Entrez le nom de la serie que vous voulez consulter :");
+		String serie = sc.nextLine();
+		lesSeriesLivres.consulter(serie, lesDocs);
 	}
 	
 	public void recherche() {
@@ -266,6 +315,18 @@ public class Application {
 		}
 	}
 	
+	public void recherche(Bibliotheque bi) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Entrez votre choix : \n 1-Recherche par ISBN \n 2-Recherche par EAN \n" );
+		int i  = sc.nextInt();
+		System.out.println("Entrez le numero : " );
+		String num = sc.nextLine();
+		if(i == 1) {
+			if(bi.getListeDocs().containsKey(num)) System.out.println(bi.getListeDocs().get(num));
+			else System.out.println("Document introuvable...\n");
+		}
+	}
+	
 	public void afficherNbType() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Date minimale de recherche : " );
@@ -275,11 +336,20 @@ public class Application {
 		lesDocs.consulterType(min, max);
 	}
 	
+	public void afficherNbType(Bibliotheque bi) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Date minimale de recherche : " );
+		int min  = sc.nextInt();
+		System.out.println("Date maximale de recherche : " );
+		int max  = sc.nextInt();
+		bi.getListeDocs().consulterType(min, max);
+	}
+	
 	public boolean menu1(int res) {
 		switch(res) {
 		case 1: return menu2(afficherMenu2());
 		case 2: return menu3(afficherMenu3());
-		case 3: return menu4(afficherMenu4());
+		case 3: return menu5(afficherMenu5());
 		case 4: return exit();
 		default:{System.out.println("votre choix n'est pas valide"); return true;}
 		}	
@@ -306,7 +376,7 @@ public class Application {
 	
 	public boolean menu4(int res) {
 		switch(res) {
-		case 1: consulterDoc(); return false;
+		case 1: lesDocs.consulter(); return false;
 		case 2: consulterSerie(); return false;
 		case 3: consulterDocsAuteur(); return false;
 		case 4: recherche(); return false;
@@ -317,18 +387,62 @@ public class Application {
 	}
 	
 	public boolean menu4(int res, String nom) {
-		for(Bibliotheque b : lesBibli) {
-			if(nom.equals(b.getNom())) Bibliotheque newB = b;
+		int i = 0;
+		for(Bibliotheque b : listeBibli) {
+			while(nom.equals(b.getNom())) {
+				i++;
+			}
 		}
 		switch(res) {
-		case 1: b.getlisteDoc().consulterDoc(); return false;
-		case 2: consulterSerie(); return false;
-		case 3: consulterDocsAuteur(); return false;
-		case 4: recherche(); return false;
-		case 5: afficherNbType(); return false;
+		case 1: listeBibli.get(i).getListeDocs().consulter(); return false;
+		case 2: consulterSerie(listeBibli.get(i)); return false;
+		case 3: consulterDocsAuteur(listeBibli.get(i)); return false;
+		case 4: recherche(listeBibli.get(i)); return false;
+		case 5: afficherNbType(listeBibli.get(i)); return false;
 		case 6: return exit();
 		default:{System.out.println("votre choix n'est pas valide"); return true;}
 		}	
+	}
+	
+	public boolean menu5(int res) {
+		switch(res) {
+		case 1: String nom = getNomBibli();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dans quelle bibliotheque voulez vous faire un emprunt \n");
+		String nom2 = sc.nextLine();
+		System.out.println("Quel est le numéro EAN du document que vous voulez emprunter ? \n");
+		String nom3 = sc.nextLine();
+		empruntB(nom, nom2, lesDocs.get(nom3));
+		case 2: return menu4(afficherMenu4());
+		case 3: return exit();
+		case 4: return exit();
+		default:{System.out.println("votre choix n'est pas valide"); return true;}
+		}	
+	}
+	
+	public String getNomBibli() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Dans quelle bibliotheque voulez vous faire vos recherches :\n");
+		return sc.nextLine();
+	}
+	
+	public void empruntB(String b1, String b2, Document doc) {
+		int i =0;
+		for(Bibliotheque b : listeBibli) {
+			while(b1.equals(b.getNom())) {
+				i++;
+			}
+		}
+		int b1Bis = i;
+		i= 0;
+		for(Bibliotheque b : listeBibli) {
+			while(b2.equals(b.getNom())) {
+				i++;
+			}
+		}
+		int b2Bis = i;
+		listeBibli.get(b1Bis).emprunter(listeBibli.get(b2Bis), doc);
+		System.out.println("Emprunt du document \n" + doc + "\nde "+ b1 +" à " + b2);
 	}
 	
 	public boolean exit() {

@@ -184,55 +184,104 @@ public class FileReader
             				app.getLesLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             				app.getLesSeriesLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             				//AJOUT AUX BIBLIOTHEQUES
-            				if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).ajouter(isbn);
-            		   		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).ajouter(isbn);
-            		   		if(numberCopyJeanPierreMelville > 0)  app.getListeBibli().get(2).ajouter(isbn);
-            		   		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).ajouter(isbn);
-            		   		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).ajouter(isbn);
+            				if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+            		   		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+            		   		if(numberCopyJeanPierreMelville > 0)  app.getListeBibli().get(2).getListeLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+            		   		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+            		   		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new Livre(ean, isbn, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             			}
             			else {
             				if(type.contains("Bande")) {
             					app.getLesDocs().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             					app.getLesSeries().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+            					//AJOUT AUX BIBLIOTHEQUES
+               					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new BD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             				}
             				else if(type.contains("Carte")) {
             					app.getLesDocs().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             					app.getLesSeries().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+            					//AJOUT AUX BIBLIOTHEQUES
+            					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new Carte(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             				}
             				else if(type.contains("Disque")) {
             					app.getLesDocs().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             					app.getLesSeries().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+            					//AJOUT AUX BIBLIOTHEQUES
+            					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new CD(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
             				}
            					else if(type.contains("societe")) {
            						app.getLesDocs().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            						app.getLesSeries().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+           						//AJOUT AUX BIBLIOTHEQUES
+            					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new JeuDeSociete(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            					}
            					else if(type.contains("Jeux")) {
            						app.getLesDocs().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            						app.getLesSeries().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+           					//AJOUT AUX BIBLIOTHEQUES
+            					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new JeuxVideo(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            					}
            					else if(type.contains("Partition")) {
            						app.getLesDocs().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            						app.getLesSeries().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+           					//AJOUT AUX BIBLIOTHEQUES
+            					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new Partition(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            					}
            					else if(type.contains("Revue")) {
            						app.getLesDocs().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            						app.getLesSeries().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+           					//AJOUT AUX BIBLIOTHEQUES
+            					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new Revue(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            					}
            					else if(type.contains("Vinyle")) {
            						app.getLesDocs().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            						app.getLesSeries().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+           					//AJOUT AUX BIBLIOTHEQUES
+            					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new Vinyle(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            					}
            					else {
            						app.getLesDocs().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
            						app.getLesSeries().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
-           					}
            					//AJOUT AUX BIBLIOTHEQUES
-           					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).ajouter(ean);
-           		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).ajouter(ean);
-           		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).ajouter(ean);
-           		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).ajouter(ean);
-           		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).ajouter(ean);
+            					if(numberCopyAimeCesaire > 0) app.getListeBibli().get(0).getListeLivres().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyEdmondRostand > 0) app.getListeBibli().get(1).getListeLivres().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyJeanPierreMelville > 0) app.getListeBibli().get(2).getListeLivres().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopyOscarWilde > 0) app.getListeBibli().get(3).getListeLivres().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+               		    		if(numberCopySaintSimon > 0) app.getListeBibli().get(4).getListeLivres().ajouter(new Autre(ean, title, publisher, dateBis, seriesTitle, seriesNumber, authorSurname, authorName));
+           					}
+           					
            				}
             	
                 System.out.println(

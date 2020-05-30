@@ -41,7 +41,7 @@ public class ListeSerie extends HashMap<String, ArrayList> {
 	}
 	
 	/* La fonction consulter ne prend rien en argument et ne renvoie rien.
-	 * Elle affiche la liste des documents de la liste.
+	 * Elle affiche la liste des documents d'une serie.
 	 */
 	public void consulter(String serie, ListeDoc liste) {
 		ArrayList<Integer> listeEan = (ArrayList<Integer>) tri(get(serie)).clone();
